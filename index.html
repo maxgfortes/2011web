@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>maxgfortes</title>
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  user-select: none !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-attachment: fixed;
+  min-height: 100%;
+  background-color: #12161c;
+  background-image: url("bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+a {
+  cursor: pointer;
+}
+
+.nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 18px 0;
+  background: #0f0f0f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2c2c2c), to(#0a0a0a));
+  background-image: -moz-linear-gradient(top, #2c2c2c, #0a0a0a);
+  background-image: -webkit-linear-gradient(top, #2c2c2c, #0a0a0a);
+  background-image: linear-gradient(to bottom, #2c2c2c, #0a0a0a);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.nav-logo {
+  float: left;
+  color: #c5cfda;
+  text-shadow: 0 1px 0px #000, 0 0 8px rgba(58,74,168,.5);
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.nav-links {
+  float: right;
+  margin-top: 4px;
+}
+
+.nav-links a {
+  display: inline-block;
+  margin-left: 18px;
+  color: #9fb0c8;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #000;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  padding-top: 130px;
+  padding-bottom: 60px;
+}
+
+.panel {
+  background-color: #20262e;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2c333d), to(#1f1f1f));
+  background-image: -moz-linear-gradient(top, #2c333d, #15191e);
+  background-image: -webkit-linear-gradient(top, #2c333d, #4f6077);
+  background-image: linear-gradient(to bottom, #2c333d, #637994);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 1px 0 rgba(255,255,255,.03),
+      0 8px 18px rgba(0,0,0,.7);
+  padding: 28px 34px;
+  margin-bottom: 30px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #d7dee6;
+  text-shadow: 0 1px 0 #000, 0 0 10px rgba(58,74,168,.25);
+  border-bottom: 1px solid #383f49;
+  padding-bottom: 12px;
+}
+
+.panel p, .panel li {
+  color: #9aa5b1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.panel code {
+  background: #0c0e11;
+  color: #8fb8e6;
+  padding: 1px 5px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.profile-box {
+  overflow: hidden;
+}
+
+.avatar {
+  float: left;
+  width: 130px;
+  height: 130px;
+  margin-right: 24px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  border: 4px solid #3a4350;
+  background: #3a4350;
+  box-shadow:
+      0 1px 3px rgba(0,0,0,.7),
+      0 0 0 1px #0a0c0f;
+}
+
+.avatar img {
+  height: 130px;
+  width: 130px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.profile-text {
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 -1px 0 #003aaf;
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  border: 1px solid #0044cc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 26px;
+  font-weight: bold;
+  font-size: 13px;
+  border: none;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 #003aaf;
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.3);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.btn:hover {
+  background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0066cc, #003399);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0066cc), to(#003399));
+  background-image: -webkit-linear-gradient(top, #0066cc, #003399);
+  background-image: linear-gradient(to bottom, #0066cc, #003399);
+}
+
+.btn-green {
+  text-shadow: 0 -1px 0 #2c7300;
+  background-color: #51a351;
+  background-image: -moz-linear-gradient(top, #62c462, #2d8e2d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#2d8e2d));
+  background-image: -webkit-linear-gradient(top, #62c462, #2d8e2d);
+  background-image: linear-gradient(to bottom, #62c462, #2d8e2d);
+}
+.btn-green:hover {
+  background-color: #2d8e2d;
+  background-image: -moz-linear-gradient(top, #4cae4c, #1f661f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4cae4c), to(#1f661f));
+  background-image: linear-gradient(to bottom, #4cae4c, #1f661f);
+}
+
+.btn-purple {
+  text-shadow: 0 -1px 0 #4b0082;
+  background-color: #7a43b6;
+  background-image: -moz-linear-gradient(top, #9c5fd6, #5e2a93);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9c5fd6), to(#5e2a93));
+  background-image: -webkit-linear-gradient(top, #9c5fd6, #5e2a93);
+  background-image: linear-gradient(to bottom, #9c5fd6, #5e2a93);
+}
+.btn-purple:hover {
+  background-color: #5e2a93;
+  background-image: linear-gradient(to bottom, #8347c0, #461d72);
+}
+
+.gallery {
+  overflow: hidden;
+}
+
+.polaroid {
+  float: left;
+  width: 250px;
+  margin: 0 18px 18px 0;
+  padding: 10px 10px 26px 10px;
+  background: #cecece;
+  border: 1px solid #f0f0f0;
+  box-shadow:
+      0 1px 0 rgba(255,255,255,.06) inset,
+      0 3px 8px rgba(0,0,0,.7);
+  -webkit-transform: rotate(-1.5deg);
+  -moz-transform: rotate(-1.5deg);
+  transform: rotate(-1.5deg);
+}
+
+.polaroid:nth-child(2) {
+  -webkit-transform: rotate(1.5deg);
+  -moz-transform: rotate(1.5deg);
+  transform: rotate(1.5deg);
+}
+
+.polaroid:nth-child(3) {
+  -webkit-transform: rotate(-0.5deg);
+  -moz-transform: rotate(-0.5deg);
+  transform: rotate(-0.5deg);
+}
+
+.polaroid img {
+  width: 100%;
+  display: block;
+  border: 1px solid #444;
+  -webkit-filter: contrast(1.05) brightness(.92);
+  filter: contrast(1.05) brightness(.92);
+}
+
+.polaroid .cap {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #8b929b;
+  font-style: italic;
+}
+
+.social-bar {
+  overflow: hidden;
+  text-align: center;
+}
+
+.social-btn {
+  display: inline-block;
+  width: 130px;
+  margin: 0 8px 10px 8px;
+  padding: 12px 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.social-twitter { background: #1799da; background-image: linear-gradient(to bottom, #5fc4f6, #1593d6); }
+.social-myspace   { background: #363636;   background-image: linear-gradient(to bottom, #666, #222); }
+.social-flickr    { background: #000000;}
+.social-facebook       { background: #184a96; background-image: linear-gradient(to bottom, #0f3375, #040953); }
+
+.social-btn:hover {
+  filter: brightness(1.1);
+}
+
+.skill-row {
+  margin-bottom: 14px;
+}
+
+.skill-name {
+  font-size: 13px;
+  color: #c4ccd6;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.meter {
+  height: 16px;
+  background: #11141a;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.04);
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background-color: #092964;
+  background-image: -moz-linear-gradient(top, #133779, #10185f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#133779), to(#10185f));
+  background-image: linear-gradient(to bottom, #133779, #10185f);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+.footer {
+  width: 100%;
+  background: #0f0f0f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2c2c2c), to(#0a0a0a));
+  background-image: -moz-linear-gradient(top, #2c2c2c, #0a0a0a);
+  background-image: -webkit-linear-gradient(top, #2c2c2c, #0a0a0a);
+  background-image: linear-gradient(to bottom, #2c2c2c, #0a0a0a);
+  border-top: 1px solid #1c222b;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer-inner {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.footer p {
+  color: #8a93a0;
+  font-size: 14px;
+  margin: 4px 0;
+  text-shadow: 0 -1px 0 #000;
+}
+
+.footer a {
+  color: #6fa8dc;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">maxgfortes</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#skills">Skills</a>
+      <a href="#social">Social</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div class="panel profile-box" id="about">
+    <div class="avatar">
+      <img src="./pfp.jpg">
+    </div>
+    <div class="profile-text">
+      <h2 style="border-bottom:none;padding-bottom:0;color:#e8edf2;">Hi, I'm maxgfortes</h2>
+      <p>
+        I'm someone who grows a lot through their own experience  not just living
+        things, but trying to understand what they mean. I get deeply involved with
+        ideas, people and projects, and I don't like living on the surface: when
+        something interests me, I think a lot, connect the dots and imagine
+        possibilities bigger than the present.
+      </p>
+      <span class="badge">Always under construction</span>
+      <br>
+      <a href="#" class="btn">Get in touch</a>
+      <a href="#gallery" class="btn btn-green">See gallery</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Who I am</h2>
+    <p>
+      I have a strong interest in technology, programming and building platforms 
+      not just as a hobby, but as actual world-building: social networks, digital
+      experiences, projects that mix communication, identity and community. I like
+      the idea of creating something people actually use, with real impact and a
+      style of its own.
+    </p>
+    <p>
+      At the same time, I have an intense relationship with aesthetics, music and
+      emotional mood. I pick songs thinking about the effect they cause, how a
+      scene "feels", how I want to be perceived in certain moments. It's almost
+      like thinking of life in scenes  a sensitivity for image and personal
+      narrative that runs through everything I do, including the way I build things.
+    </p>
+    <p>
+      In relationships, I've gone through pretty intense phases of connection,
+      attachment and learning  idealization, disappointment, and, little by
+      little, more maturity. Today I have a calmer outlook on situations that
+      used to affect me much more, which shows an important inner shift: I
+      understood that people change, that stories aren't fixed, and that not
+      everything defines me.
+    </p>
+    <p>
+      I also carry a constant search for identity and place. At times I don't
+      quite feel "home" in certain spaces, as if I were between phases or
+      different environments  which fits someone who is still under construction,
+      not settled in one spot, but still figuring out where and how they want to
+      belong.
+    </p>
+    <p>
+      Deep down, what shows up the most in all of this is movement. I change,
+      adjust, learn, revisit feelings and ideas. And even when it looks confusing
+      or intense, it's all part of a continuous process of identity formation 
+      I'm still writing who I am, but already thinking big while I do it.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>What I want to build</h2>
+    <p>
+      I have a strong ambition to create something relevant, not just consume
+      what already exists. Ideas like social networks, digital platforms and
+      creative projects show that I'm not satisfied with just being a user: I
+      want to be someone who designs experiences  something that connects
+      technology, community and identity in a way I haven't quite seen out there.
+    </p>
+  </div>
+
+  <div class="panel" id="skills">
+    <h2>How I work</h2>
+    <div class="skill-row">
+      <div class="skill-name">Technology &amp; platform building</div>
+      <div class="meter"><div class="meter-fill" style="width:92%;"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Aesthetic sensibility &amp; personal narrative</div>
+      <div class="meter"><div class="meter-fill" style="width:95%;"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Deep connection with ideas and people</div>
+      <div class="meter"><div class="meter-fill" style="width:97%;"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-name">Continuous movement / identity formation</div>
+      <div class="meter"><div class="meter-fill" style="width:100%;"></div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="gallery">
+    <h2>A few things I like</h2>
+    <div class="gallery">
+      <div class="polaroid">
+        <img src="p1.jpg" alt="retro interface">
+        <div class="cap">my reason to stay alive</div>
+      </div>
+      <div class="polaroid">
+        <img src="p2.jpg" alt="old computer">
+        <div class="cap">vacations to my grandparents house</div>
+      </div>
+      <div class="polaroid">
+        <img src="p3.jpg" alt="code">
+        <div class="cap">this is me</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="social">
+    <h2>My social links</h2>
+    <div class="social-bar">
+      <a href="https://x.com/maxgfortes" class="social-btn social-twitter">Twitter</a>
+      <a href="https://github.com/maxgfortes" class="social-btn social-myspace">GitHub</a>
+      <a href="https://tiktok.com/@maxgfortes" class="social-btn social-flickr">TikTok</a>
+      <a href="https://facebook.com/maxgfortes" class="social-btn social-facebook">Facebook</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <p><strong>maxgfortes</strong> &mdash; still writing who I am, but already thinking big.</p>
+    <p>
+      <a href="https://x.com/maxgfortes">Twitter</a> &middot;
+      <a href="https://github.com/maxgfortes">GitHub</a> &middot;
+      <a href="https://tiktok.com/@maxgfortes">TikTok</a> &middot;
+      <a href="https://facebook.com/maxgfortes">Facebook</a>
+    </p>
+    <p>&copy; 2026 maxgfortes. All rights reserved</p>
+  </div>
+</div>
+
+</body>
+</html>
